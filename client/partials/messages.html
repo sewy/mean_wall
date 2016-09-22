@@ -1,0 +1,27 @@
+<h1>Full MEAN Wall ------- Welcome {{user}}! | <button ng-click="logout()">Sign Out</button></h1>
+<hr>
+<form>
+	<ul>
+		<li>Post a Message: </li>
+		<li><textarea rows=6 cols=60 ng-model="message.text"></textarea></li>
+		<li><input type="submit" value="Post a message" ng-click="post(message)"></li>
+	</ul>
+</form>
+<div ng-if="messages !== undefined">
+	<div ng-repeat="message in messages">
+		<p>{{message.user}}</p>
+		<p>{{message.text}}</p>
+		<p>----Comments----</p>
+		<div ng-repeat="comment in message.comments">
+			<p>{{comment.user}} says: {{comment.text}}</p>
+		</div>
+		<form>
+			<ul>
+				<li>Post Comment:</li>
+				<li><textarea rows=4 cols =35 ng-model="comment.text"></textarea></li>
+				<li><input type="submit" value="Post Comment" ng-click="postc(comment, message._id)"></li>
+			</ul>
+		</form>
+		<hr>
+	</div>
+</div>
